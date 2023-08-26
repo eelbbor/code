@@ -23,7 +23,7 @@ At the time of this writing the install tips are specific to development on a Ma
 ```
 
 ## Built With
-* [Bazelisk] (https://github.com/bazelbuild/bazelisk) Wrapper for [Bazel](https://bazel.build/)
+* [Bazelisk](https://bazel.build/install/bazelisk) recommended for maintaining [Bazel](https://bazel.build/)
 * [OpenJdk17](https://openjdk.org/projects/jdk/17/)
 * [REACTJS](https://reactjs.org/)
 * [YARN](https://yarnpkg.com/)
