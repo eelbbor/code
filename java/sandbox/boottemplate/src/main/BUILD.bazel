@@ -1,0 +1,13 @@
+package(default_visibility = ["//visibility:public"])
+
+java_library(
+    name = "boottemplate-lib",
+    srcs = glob(["java/com/eelbbor/boottemplate/*.java"]),
+    deps = ["@maven//:com_google_guava_guava"],
+)
+
+java_binary(
+    name = "boottemplate-bin",
+    main_class = "com.eelbbor.boottemplate.Main",
+    runtime_deps = [":boottemplate-lib"],
+)
