@@ -1,0 +1,15 @@
+load("@rules_jvm_external//:defs.bzl", "artifact")
+load("@contrib_rules_jvm//java:defs.bzl", "JUNIT5_DEPS", "java_test_suite")
+
+java_test_suite(
+    name="tests",
+    srcs = glob(["java/**/*.java"]),
+    runner = "junit5",
+    test_suffixes = ["Test.java"],
+    runtime_deps = JUNIT5_DEPS,
+    deps = [
+        "//java/sandbox/boottemplate/src/main:boottemplate-lib",
+        artifact("org.junit.jupiter:junit-jupiter-api"),
+        artifact("org.junit.jupiter:junit-jupiter-params"),
+    ],
+)
