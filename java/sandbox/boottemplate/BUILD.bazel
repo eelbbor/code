@@ -1,0 +1,29 @@
+load("@rules_jvm_external//:defs.bzl", "artifact")
+load("@contrib_rules_jvm//java:defs.bzl", "JUNIT5_DEPS", "java_test_suite")
+
+package(default_visibility = ["//visibility:public"])
+
+java_library(
+    name = "java-maven-lib",
+    srcs = glob(["src/main/java/com/eelbbor/boottemplate/*.java"]),
+    deps = ["@maven//:com_google_guava_guava"],
+)
+
+java_binary(
+    name = "java-maven",
+    main_class = "com.eelbbor.boottemplate.Main",
+    runtime_deps = [":java-maven-lib"],
+)
+
+java_test_suite(
+    name="tests",
+    srcs = glob(["src/test/java/**/*.java"]),
+    runner = "junit5",
+    test_suffixes = ["Test.java"],
+    runtime_deps = JUNIT5_DEPS,
+    deps = [
+        ":java-maven-lib",
+        artifact("org.junit.jupiter:junit-jupiter-api"),
+        artifact("org.junit.jupiter:junit-jupiter-params"),
+    ],
+)
