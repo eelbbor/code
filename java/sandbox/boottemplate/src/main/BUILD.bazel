@@ -1,13 +1,13 @@
-package(default_visibility = ["//visibility:public"])
-
 java_library(
     name = "boottemplate-lib",
-    srcs = glob(["java/com/eelbbor/boottemplate/*.java"]),
+    srcs = glob(["java/com/eelbbor/boottemplate/**/*.java"]),
+    visibility = ["//visibility:public"],
     deps = ["@maven//:com_google_guava_guava"],
 )
 
 java_binary(
     name = "boottemplate-bin",
     main_class = "com.eelbbor.boottemplate.Main",
+    visibility = ["//visibility:public"],
     runtime_deps = [":boottemplate-lib"],
 )

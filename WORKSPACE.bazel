@@ -43,3 +43,31 @@ contrib_rules_jvm_deps()
 load("@contrib_rules_jvm//:setup.bzl", "contrib_rules_jvm_setup")
 contrib_rules_jvm_setup()
 
+
+# Python
+PYTHON_RULES_VERSION = "0.25.0"
+PYTHON_RULES_SHA = "5868e73107a8e85d8f323806e60cad7283f34b32163ea6ff1020cf27abef6036"
+http_archive(
+    name = "rules_python",
+    sha256 = PYTHON_RULES_SHA,
+    strip_prefix = "rules_python-%s" % PYTHON_RULES_VERSION,
+    url = "https://github.com/bazelbuild/rules_python/archive/refs/tags/%s.tar.gz" % PYTHON_RULES_VERSION,
+)
+
+load("@rules_python//python:repositories.bzl", "python_register_toolchains")
+
+python_register_toolchains(
+    name = "python3_11",
+    python_version = "3.11",
+)
+
+load("@python3_11//:defs.bzl", "interpreter")
+load("@rules_python//python:pip.bzl", "pip_install")
+
+# Create a central external repo, @python_deps, that contains Bazel targets for all the
+# third-party packages specified in the requirements.txt file.
+pip_install(
+    name = "python_deps",
+    python_interpreter_target = interpreter,
+    requirements = "//scripts:requirements.txt",
+)

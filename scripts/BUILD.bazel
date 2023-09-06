@@ -1,0 +1,11 @@
+load("@rules_python//python:defs.bzl", "py_binary", "py_library")
+load("@python_deps//:requirements.bzl", "requirement")
+
+py_binary(
+    name = "scaffold",
+    main = "scaffold.py",
+    srcs = glob(["**/*.py"]),
+    deps = [
+        # Add other dependencies as needed
+    ],
+)

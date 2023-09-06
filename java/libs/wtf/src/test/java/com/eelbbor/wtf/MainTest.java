@@ -1,12 +1,12 @@
-package com.eelbbor.boottemplate;
+package com.eelbbor.wtf;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 public class MainTest {
     @Test
     public void testSomeStuff() {
-        Assertions.assertEquals(0, Main.compare(1, 1), "should return 0 when both numbers are equal");
+        Main main = new Main();
+        Assertions.assertTrue(main.trueMethod());
     }
 }

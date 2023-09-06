@@ -1,0 +1,8 @@
+java_library(
+    name = "wtf-lib",
+    srcs = glob(["java/com/eelbbor/wtf/**/*.java"]),
+    visibility = ["//visibility:public"],
+    deps = [
+        # Add library dependencies here.
+    ],
+)
